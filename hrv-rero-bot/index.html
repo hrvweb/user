@@ -10,13 +10,204 @@
 <!-- liên kết nhúng -->
 <meta name="author" content="Hrv Web">
 <meta property="og:title" content="Hrv Rero Bot • Discord App">
-<meta property="og:description" content="mời Hrv Rero Bot vào máy chủ!">
+<meta property="og:description" content="Bot economy, fun, image và quản lý máy chủ discord của bạn">
 <meta name="theme-color" content="#20ffff">
-<meta property="og:image" content="https://cdn.discordapp.com/avatars/1203518238026235985/2dffbd20dc82631ea0b3f9b1affa1763.png?size=1024&ignore=true" />
-<!-- chuyển hướng sang trang web khác -->
-<meta http-equiv="refresh" content="0;url=https://discord.com/oauth2/authorize?client_id=1203518238026235985&permissions=2146958847&response_type=code&redirect_uri=https%3A%2F%2Fdiscord.com%2Finvite%2FZ6BMGX6tGJ&scope=guilds+guilds.join+bot+applications.commands+applications.entitlements+identify">
+<meta property="og:image" content="https://i.ibb.co/kT0mNtb/5-F909-D87-84-E0-4-EBF-AC64-641-AF9-A1-EAF6.png" />
+<style>
+body {
+background: linear-gradient(to bottom, #000000, #ff0000);
+text-align: center;
+padding: 20px;
+padding-bottom: 20px;
+margin-top: -26px;
+}
+
+.container {
+position: relative;
+}
+
+.banner {
+position: absolute;
+top: -26px;
+left: 0;
+width: 100%;
+height: 82%;
+}
+
+.avatar {
+position: relative;
+z-index: 1;
+width: 200px;
+height: 200px;
+border-radius: 50%;
+border: 3px solid #fff;
+}
+
+.btn-invite {
+background-color: #ff5000;
+color: #fff;
+padding: 20px 30px;
+border: none;
+border-radius: 6px;
+cursor: pointer;
+font-size: 160%;
+}
+
+.btn-invite:hover {
+background-color: #ff5000;
+}
+
+#snowflakeContainer {
+position: absolute;
+left: 0;
+top: 0;
+}
+
+.snowflake {
+  padding-left: 15px;
+  font-size: 14px;
+  line-height: 24px;
+  position: fixed;
+  color: #ebebeb;
+  user-select: none;
+  z-index: 1000;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.snowflake:hover {
+ cursor: default;
+}
+</style>
 </head>
 <body>
-<!-- liên kết chuyển hướng không có nội dung -->
+<div id="snowflakeContainer">
+<p class="snowflake">🤖</p>
+</div>
+<img src="https://cdn.discordapp.com/banners/1203518238026235985/a_8d69f843387ec87bdbec7992a55a9c53.gif?size=512" alt="Banner" class="banner">
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+<img src="https://cdn.discordapp.com/avatars/1203518238026235985/2dffbd20dc82631ea0b3f9b1affa1763.png?size=1024&ignore=true" alt="Hrv Rero Bot" class="avatar">
+</div>
+<h2 style="color: #fff;">Hrv Rero Bot</h2>
+<br>
+<button class="btn-invite" onclick="window.location.href='https://hrvweb.github.io/user/hrv-rero-bot/invite'">Invite</button>
+<footer>
+&copy; 2025 Hrv Web. All rights reserved.
+</footer>
+<script type="text/javascript">
+//<![CDATA[
+  var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+  var transforms = ["transform", "msTransform", "webkitTransform", "mozTransform", "oTransform"];
+  var transformProperty = getSupportedPropertyName(transforms);
+  var snowflakes = [];
+  var browserWidth;
+  var browserHeight;
+  var numberOfSnowflakes = 20;
+  var resetPosition = false;
+
+  function setup() {
+    window.addEventListener("DOMContentLoaded", generateSnowflakes, false);
+    window.addEventListener("resize", setResetFlag, false);
+  }
+
+  setup();
+
+  function getSupportedPropertyName(b) {
+    for (var a = 0; a < b.length; a++) {
+      if (typeof document.body.style[b[a]] != "undefined") {
+        return b[a];
+      }
+    }
+    return null;
+  }
+
+  function Snowflake(b, a, d, e, c) {
+    this.element = b;
+    this.radius = a;
+    this.speed = d;
+    this.xPos = e;
+    this.yPos = c;
+    this.counter = 0;
+    this.sign = Math.random() < 0.5 ? 1 : -1;
+    this.element.style.opacity = 0.5 + Math.random();
+    this.element.style.fontSize = 4 + Math.random() * 20 + "px";
+  }
+
+  Snowflake.prototype.update = function () {
+    this.counter += this.speed / 5000;
+    this.xPos += this.sign * this.speed * Math.cos(this.counter) / 40;
+    this.yPos += Math.sin(this.counter) / 40 + this.speed / 30;
+    setTranslate3DTransform(this.element, Math.round(this.xPos), Math.round(this.yPos));
+    if (this.yPos > browserHeight) {
+      this.yPos = -50;
+    }
+  };
+
+  function setTranslate3DTransform(a, c, b) {
+    var d = "translate3d(" + c + "px, " + b + "px, 0)";
+    a.style[transformProperty] = d;
+  }
+
+  function generateSnowflakes() {
+    var b = document.querySelector(".snowflake");
+    var h = b.parentNode;
+    browserWidth = document.documentElement.clientWidth;
+    browserHeight = document.documentElement.clientHeight;
+
+    for (var d = 0; d < numberOfSnowflakes; d++) {
+      var j = b.cloneNode(true);
+      h.appendChild(j);
+      var e = getPosition(50, browserWidth);
+      var a = getPosition(50, browserHeight);
+      var c = 5 + Math.random() * 40;
+      var g = 4 + Math.random() * 10;
+      var f = new Snowflake(j, g, c, e, a);
+      snowflakes.push(f);
+    }
+
+    h.removeChild(b);
+    moveSnowflakes();
+  }
+
+  function moveSnowflakes() {
+    for (var b = 0; b < snowflakes.length; b++) {
+      var a = snowflakes[b];
+      a.update();
+    }
+
+    if (resetPosition) {
+      browserWidth = document.documentElement.clientWidth;
+      browserHeight = document.documentElement.clientHeight;
+
+      for (var b = 0; b < snowflakes.length; b++) {
+        var a = snowflakes[b];
+        a.xPos = getPosition(50, browserWidth);
+        a.yPos = getPosition(50, browserHeight);
+      }
+      
+      resetPosition = false;
+    }
+
+    requestAnimationFrame(moveSnowflakes);
+  }
+
+  function getPosition(b, a) {
+    return Math.round(-1 * b + Math.random() * (a + 2 * b));
+  }
+
+  function setResetFlag(a) {
+    resetPosition = true;
+  }
+//]]>
+</script>
 </body>
 </html>
