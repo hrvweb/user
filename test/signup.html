@@ -1,1 +1,101 @@
-{"status": "200", "msg": "trang web này hiện chưa có gì cả!"}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Tạo Tài Khoản</title>
+<style>
+body{
+font-family:Arial;
+}
+*{
+box-sizing:border-box;
+-webkit-box-sizing:border-box;
+-moz-box-sizing:border-box;
+-o-box-sizing:border-box;
+}
+.container{
+padding:16px;
+max-width:450px;
+margin:auto;
+background:linear-gradient(#787ea1,#000033);
+background:-webkit-linear-gradient(#787ea1,#000033);
+background:-moz-linear-gradient(#787ea1,#000033);
+background:-o-linear-gradient(#787ea1,#000033);
+color:white;
+}
+h1, p{
+text-aling:center;
+}
+input[type=text],input[type=password]{
+width:100%;
+padding:15px;
+margin:5px 0 22px 0;
+display:inline-block;
+border:none;
+background:#f1f1f1";
+font-size:17px;
+}
+button{
+background:#4caf50;
+color:#fff;
+padding:14px 20px;
+margin:8px 0;
+border:none;
+cursor:pointer;
+width:100%;
+opacity:0.9;
+font-size:17px;
+}
+button:hover{
+opacity:1;
+}
+.cancelbtn{
+background:#f44336;
+}
+.cancelbtn, .signupbtn{
+float:left;
+width:50%;
+}
+hr{
+border:1px solid #f1f1f1;
+margin-bottom:25px;
+}
+.clearfix::after{
+content: "";
+clear:both;
+display:table;
+}
+@media screen and (max- width: 300px)
+{
+.cancelbtn, .signupbtn{
+width:100%;
+}
+
+}
+</style>
+</head>
+<body>
+<div class="container">
+<form>
+ <h1> Tạo Tài khoản </h1>
+ <p> </p>
+ <hr>
+ <label for ="email"> <b> Email </b> </label>
+ <input type="text" placeholder="Enter Email" name ="email" required>
+
+ <label for ="email"> <b> Mật Khẩu </b> </label>
+ <input type="Password" placeholder="Enter Password" name ="psw" required>
+
+  <label for ="email"> <b> Nhập Lại Mật Khẩu </b> </label>
+ <input type="Password" placeholder="Repeat password" name ="re-psw" required>
+<label>
+</label>
+<p> Ấn vào nút tạo tài khoản đồng nghĩa với việc bạn phải tuân thủ
+<a href ="#"> Điều khoản & Quyền riêng tư </a> </p>
+<div class ="clearfix">
+<button type ="button" class ="cancelbtn"> Thoát </button>
+<button type ="button" class ="signupbtn"> Tạo Tài Khoản </button>
+</div>
+ </form>
+</div>
+</body>
+</html>
