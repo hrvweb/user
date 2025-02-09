@@ -420,24 +420,24 @@ document.getElementById("reply").innerHTML = "Đang Chờ Cooldown... (" + Math.
 const form = document.getElementById('myForm');
 
 form.addEventListener('submit', (e) => {
-e.preventDefault();
-const name = document.getElementById('name').value;
-const email = document.getElementById('email').value;
-const content = document.getElementById('content').value;
-const data = {
-"content": `### 👤|${name} Vừa Góp Ý: ${content}
+  e.preventDefault();
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const content = document.getElementById('content').value;
+  const data = {
+    "content": `### 👤|${name} Vừa Góp Ý: ${content}
 ### 💌|Email: ${email}`
-};
-fetch('`${{ secrets.url_webhook }}', {
-method: 'POST',
-headers: {
-'Content-Type': 'application/json',
-},
-body: JSON.stringify(data),
-})
-.then((response) => response.json())
-.then((data) => console.log(data))
-.catch((error) => console.error(error));
+  };
+  fetch('${{ secrets.URL_WEBHOOK }}', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  })
+ .then((response) => response.json())
+ .then((data) => console.log(data))
+ .catch((error) => console.error(error));
 });
 </script>
 </body>
