@@ -167,6 +167,59 @@ height: 30px;
 .snowflake:hover {
  cursor: default;
 }
+
+.mail {
+font-family: Arial, sans-serif;
+font-size: 14px;
+padding: 10px;
+border-radius: 6px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+color: #fff;
+border: 1px solid #ff5000;
+background-color: #000000;
+margin: 0px;
+margin-top: 10px;
+margin-left: 0px;
+width: 90%;
+padding-left: 10px;
+line-height: 0%;
+}
+
+label {
+display: block;
+margin-bottom: 10px;
+}
+
+input[type="text"], input[type="email"] {
+width: 90%;
+height: 10px;
+margin-bottom: 1px;
+padding: 10px;
+border: 1px solid #ff5000;
+}
+
+textarea {
+width: 90%;
+height: 50px;
+margin-bottom: 1px;
+padding: 10px;
+border: 1px solid #ff5000;
+}
+
+input[type="submit"] {
+margin-top: 10px;
+margin-left: 110px;
+margin-bottom: 10px;
+padding: 10px;
+width: 60px;
+height: 36px;
+color: #fff;
+background-color: #ff5000;
+}
+
+input[type="submit"]:hover {
+background-color: #ff5000;
+}
 </style>
 </head>
 <body>
@@ -193,6 +246,19 @@ Whatsup Gay (Thế Cho Nhanh)<h5>
 <img class="logo-2" src="https://cdn.discordapp.com/emojis/1337977358577172512.png" title="Logo tt" alt="Logo tt"><p style="margin-top: -38px;margin-left: 50px;"><a style="color: #fff;text-decoration: none;" href="https://www.tiktok.com/@hungrero_vn">hungrero_vn</a></p>
 <img class="logo-3" src="https://cdn.discordapp.com/embed/avatars/0.png" title="Logo dsc" alt="Logo dsc"><p style="margin-top: -38px;margin-left: 50px;"><a style="color: #fff;text-decoration: none;" href="https://dsc.gg/hrv-rero-clan">Hrv Rero Clan</a></p>
 <img class="logo-4" src="https://cdn.discordapp.com/emojis/1337979886509494324.png" title="Logo bot" alt="Logo bot"><p style="margin-top: -38px;margin-left: 50px;"><a style="color: #fff;text-decoration: none;" href="https://hrvweb.github.io/user/hrv-rero-bot/invite">Hrv Rero Bot</a></p>
+</div>
+<div class="mail">
+<form id="myForm">
+<h2>Gửi Thư?</h2>
+<br>
+<h3>Tên:</h3>
+<input type="text" id="name" name="name" placeholder="nhập tên của bạn!" required>
+<h3>Email: (có thể bỏ qua)</h3>
+<input type="email" id="email" name="email" value="none@gmail.com" placeholder="nhập email của bạn!"><br>
+<h3>Nội dung:</h3>
+<textarea id="content" name="content" placeholder="nhập nội dung bạn muốn gửi!" required></textarea><br>
+<input type="submit" value="Gửi">
+</form>
 </div>
 </div>
 <script type="text/javascript">
@@ -300,6 +366,29 @@ Whatsup Gay (Thế Cho Nhanh)<h5>
     resetPosition = true;
   }
 //]]>
+
+const form = document.getElementById('myForm');
+
+form.addEventListener('submit', (e) => {
+e.preventDefault();
+const name = document.getElementById('name').value;
+const email = document.getElementById('email').value;
+const content = document.getElementById('content').value;
+const data = {
+"content": `### 👤|${name} Vừa Góp Ý: ${content}
+### 💌|Email: ${email}`
+};
+fetch('https://discord.com/api/webhooks/1338001609216622672/_fctv6v7IKpFNPMcGpOIjAopKCJjYP3AV3EmeYyVREn9bZ17PXi2K3szG0JrejEPKg_9', {
+method: 'POST',
+headers: {
+'Content-Type': 'application/json',
+},
+body: JSON.stringify(data),
+})
+.then((response) => response.json())
+.then((data) => console.log(data))
+.catch((error) => console.error(error));
+});
 </script>
 </body>
 </html>
