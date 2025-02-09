@@ -259,6 +259,7 @@ Whatsup Gay (Thế Cho Nhanh)<h5>
 <textarea id="content" name="content" placeholder="nhập nội dung bạn muốn gửi!" required></textarea><br>
 <input type="submit" value="Gửi">
 </form>
+<div id="reply"></div>
 </div>
 </div>
 <p style="color: #fff;text-align: center;">&copy; 2025 Hrv Web. All rights reserved!</p>
@@ -368,6 +369,54 @@ Whatsup Gay (Thế Cho Nhanh)<h5>
   }
 //]]>
 
+let cooldown = false;
+let cooldownTime = 60000;
+let startTime = 0;
+
+document.getElementById("myForm").addEventListener("submit", function(event) {
+if (cooldown) {
+let currentTime = new Date().getTime();
+let remainingTime = cooldownTime - (currentTime - startTime);
+if (remainingTime < 0) {
+cooldown = false;
+document.getElementById("reply").innerHTML = "";
+localStorage.removeItem("cooldown");
+return;
+}
+document.getElementById("reply").innerHTML = "Đang Chờ Cooldown... (" + Math.ceil(remainingTime / 1000) + " giây)";
+return;
+}
+
+event.preventDefault();
+document.getElementById("reply").innerHTML = "Nội Dung Đã Được Gửi Đi!";
+cooldown = true;
+startTime = new Date().getTime();
+localStorage.setItem("cooldown", JSON.stringify({ cooldown: true, startTime: startTime }));
+
+setTimeout(function() {
+cooldown = false;
+document.getElementById("reply").innerHTML = "";
+localStorage.removeItem("cooldown");
+}, cooldownTime);
+});
+
+if (localStorage.getItem("cooldown")) {
+let cooldownData = JSON.parse(localStorage.getItem("cooldown"));
+if (cooldownData.cooldown) {
+cooldown = true;
+startTime = cooldownData.startTime;
+let currentTime = new Date().getTime();
+let remainingTime = cooldownTime - (currentTime - startTime);
+if (remainingTime < 0) {
+cooldown = false;
+document.getElementById("reply").innerHTML = "";
+localStorage.removeItem("cooldown");
+} else {
+document.getElementById("reply").innerHTML = "Đang Chờ Cooldown... (" + Math.ceil(remainingTime / 1000) + " giây)";
+}
+}
+}
+
 const form = document.getElementById('myForm');
 
 form.addEventListener('submit', (e) => {
@@ -379,7 +428,7 @@ const data = {
 "content": `### 👤|${name} Vừa Góp Ý: ${content}
 ### 💌|Email: ${email}`
 };
-fetch('https://discord.com/api/webhooks/1338001609216622672/_fctv6v7IKpFNPMcGpOIjAopKCJjYP3AV3EmeYyVREn9bZ17PXi2K3szG0JrejEPKg_9', {
+fetch('`${{ secrets.url_webhook }}', {
 method: 'POST',
 headers: {
 'Content-Type': 'application/json',
@@ -392,4 +441,4 @@ body: JSON.stringify(data),
 });
 </script>
 </body>
-</html>
+</html
