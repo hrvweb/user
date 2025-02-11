@@ -381,13 +381,29 @@ if (remainingTime < 0) {
 cooldown = false;
 document.getElementById("reply").innerHTML = "";
 localStorage.removeItem("cooldown");
-return;
 }
-document.getElementById("reply").innerHTML = "Đang Chờ Cooldown... (" + Math.ceil(remainingTime / 1000) + " giây)";
+document.getElementById("reply").innerHTML = "Đang Chờ Cooldown... (" + Math.ceil(remainingTime / 1000) + " Giây)";
 return;
 }
 
 event.preventDefault();
+const name = document.getElementById('name').value;
+const email = document.getElementById('email').value;
+const content = document.getElementById('content').value;
+const data = {
+"content": `### 👤|${name} Vừa Góp Ý: ${content}
+### 💌|Email: ${email}`
+};
+fetch('https://discord.com/api/webhooks/1338734456009392181/ncPBS07r7MfMlPR0SnRDXEL647H_zNHh27kwc5gMmnrfb_kYe76mZvzhMqZArSi8fb24', {
+method: 'POST',
+headers: {
+'Content-Type': 'application/json',
+},
+body: JSON.stringify(data),
+})
+.then((response) => response.json())
+.then((data) => console.log(data))
+.catch((error) => console.error(error));
 document.getElementById("reply").innerHTML = "Nội Dung Đã Được Gửi Đi!";
 cooldown = true;
 startTime = new Date().getTime();
@@ -412,33 +428,10 @@ cooldown = false;
 document.getElementById("reply").innerHTML = "";
 localStorage.removeItem("cooldown");
 } else {
-document.getElementById("reply").innerHTML = "Đang Chờ Cooldown... (" + Math.ceil(remainingTime / 1000) + " giây)";
+document.getElementById("reply").innerHTML = "Đang Chờ Cooldown... (" + Math.ceil(remainingTime / 1000) + " Giây)";
 }
 }
 }
-
-const form = document.getElementById('myForm');
-
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-  const content = document.getElementById('content').value;
-  const data = {
-    "content": `### 👤|${name} Vừa Góp Ý: ${content}
-### 💌|Email: ${email}`
-  };
-  fetch('https://discord.com/api/webhooks/1338734456009392181/ncPBS07r7MfMlPR0SnRDXEL647H_zNHh27kwc5gMmnrfb_kYe76mZvzhMqZArSi8fb24', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  })
- .then((response) => response.json())
- .then((data) => console.log(data))
- .catch((error) => console.error(error));
-});
 </script>
 </body>
 </html
