@@ -114,6 +114,7 @@ xuongRong.style.left = Math.random() * (max - min) + min + 'px';
 
 let qua = false;
 let cooldownQua = false;
+let cooldownDie = false;
 
 function kiemTraVaCham() {
 const xuongRongRect = xuongRong.getBoundingClientRect();
@@ -121,8 +122,12 @@ const khungLongRect = khungLong.getBoundingClientRect();
 if (xuongRongRect.right > khungLongRect.left + 36 && xuongRongRect.left < khungLongRect.right - 46 && xuongRongRect.top < khungLongRect.bottom - 30) {
 alert("You Lose!");
 location.reload();
+cooldownDie = true;
+setTimeout(function() {
+cooldownDie = false;
+}, 2600);
 }
-else if (xuongRongRect.right < khungLongRect.left && qua == false) {
+else if (xuongRongRect.right < khungLongRect.left && qua == false && !cooldownDie) {
 document.getElementById('point').play();
 diem = diem + 1;
 qua = true;
@@ -159,7 +164,9 @@ if (viTriXuongRong < khoangCachToiDa) {
 xuongRong.style.left = window.innerWidth + 'px';
 hasPassedXuongRong = false;
 }
+if (!cooldownDie) {
 kiemTraVaCham();
+}
 requestAnimationFrame(function() {
 isAnimating = false;
 diChuyenXuongRong();
