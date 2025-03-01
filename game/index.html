@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- đặt ngôn ngữ và cài đặt trang web -->
-<html lang="vi">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,11 +8,11 @@
 <title>Hrv Clan Game</title>
 <link rel="icon" type="image/png" href="https://iili.io/2pxjVAg.png">
 <!-- liên kết nhúng -->
-<meta property="og:site_name" content="Hrv Web" />
+<meta property="og:site_name" content="Hrv Web">
 <meta property="og:title" content="Hrv Rero Clan • Game">
 <meta property="og:description" content="Hrv Clan Game! List: 001">
 <meta name="theme-color" content="#20ffff">
-<meta property="og:image" content="https://iili.io/2pxjVAg.png" />
+<meta property="og:image" content="https://iili.io/2pxjVAg.png">
 <style>
 body {
 background-color: #333;
@@ -21,7 +21,7 @@ background-color: #333;
 #mat-dat {
 padding: 16px;
 background-color: #20ff00;
-width: 96%;
+width: 95%;
 height: 16px;
 margin-top: 66%;
 margin-left: -8px;
@@ -74,47 +74,44 @@ margin-left: 246px;
 </div>
 </div>
 <script>
-document.getElementById('diem').innerHTML = 'Điểm: 0<br>Kỉ Lục: ' + localStorage.getItem('kiLuc');
+let diem = 0;
+let cooldownJump = false;
+let isJump = false;
+let kiLuc = parseInt(localStorage.getItem('kiLuc'));
+if (kiLuc === null) {
+localStorage.setItem('kiLuc', 0);
+}
+document.getElementById('diem').innerHTML = 'Điểm: ' + diem + '<br>Kỉ Lục: ' + kiLuc;
 
 const khungLong = document.getElementById('khung-long');
 
-let diem = 0;
-let cooldown = false;
-let cooldownTime = 1600;
-let isJumping = false;
-let hasPassedXuongRong = false;
-let isGameStarted = false;
-
 function nhayLen() {
-if (!cooldown) {
-cooldown = true;
+if (!cooldownJump) {
+cooldownJump = true;
+isJump = true;
 khungLong.style.bottom = '250px';
-isJumping = true;
-hasPassedXuongRong = false;
 setTimeout(function() {
 khungLong.style.bottom = '130px';
-isJumping = false;
+isJump = false;
 }, 666);
 setTimeout(function() {
-cooldown = false;
-}, cooldownTime);
+cooldownJump = false;
+}, 1600);
 document.getElementById('jump').play();
 }
 }
-
 document.addEventListener('click', nhayLen);
 
 const xuongRong = document.getElementById('xuong-rong');
 
 let tocDo = -3.5;
+let qua = false;
+let cooldownQua = false;
+let cooldownDie = false;
 const khoangCachToiDa = -300;
 const min = 100;
 const max = 500;
 xuongRong.style.left = Math.random() * (max - min) + min + 'px';
-
-let qua = false;
-let cooldownQua = false;
-let cooldownDie = false;
 
 function kiemTraVaCham() {
 const xuongRongRect = xuongRong.getBoundingClientRect();
@@ -131,16 +128,14 @@ else if (xuongRongRect.right < khungLongRect.left && qua == false && !cooldownDi
 document.getElementById('point').play();
 diem = diem + 1;
 qua = true;
-let kiLuc = parseInt(localStorage.getItem('kiLuc'));
-if (kiLuc === null || isNaN(kiLuc)) {
-kiLuc = 0;
+if (diem > kiLuc) {
+localStorage.setItem('kiLuc', diem);
 }
 document.getElementById('diem').innerHTML = 'Điểm: ' + diem + '<br>Kỉ Lục: ' + kiLuc;
 if (diem % 50 == 0 && diem!= 0) {
-tocDo -= 5;
+tocDo -= 0.5;
 }
 }
-
 else if (xuongRongRect.right > khungLongRect.left && cooldownQua == false) {
 qua = false;
 cooldownQua = true;
@@ -151,18 +146,13 @@ cooldownQua = false;
 }
 
 let isAnimating = false;
-
 function diChuyenXuongRong() {
-if (!isGameStarted) {
-isGameStarted = true;
-}
 if (!isAnimating) {
 isAnimating = true;
 const viTriXuongRong = parseInt(xuongRong.style.left) || 0;
 xuongRong.style.left = (viTriXuongRong + tocDo) + 'px';
 if (viTriXuongRong < khoangCachToiDa) {
 xuongRong.style.left = window.innerWidth + 'px';
-hasPassedXuongRong = false;
 }
 if (!cooldownDie) {
 kiemTraVaCham();
