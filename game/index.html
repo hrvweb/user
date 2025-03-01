@@ -78,7 +78,8 @@ let diem = 0;
 let cooldownJump = false;
 let isJump = false;
 let kiLuc = parseInt(localStorage.getItem('kiLuc'));
-if (kiLuc === null) {
+if (kiLuc === null || isNaN(kiLuc)) {
+kiLuc = 0;
 localStorage.setItem('kiLuc', 0);
 }
 document.getElementById('diem').innerHTML = 'Điểm: ' + diem + '<br>Kỉ Lục: ' + kiLuc;
