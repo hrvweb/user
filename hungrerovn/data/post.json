@@ -1,1 +1,13 @@
-{"status": "200", "msg": "trang web này hiện chưa có gì cả!"}
+[{
+"index": "1",
+"time": "12/03/2025 00:00",
+"owner": {
+"id": "1103717241268207636",
+"name": "Hrv | HưNgG - 🌹",
+"avatar": "https://cdn.discordapp.com/avatars/1103717241268207636/3d47687d5bfbd409c527b64beaab34f9.png?size=1024&ignore=true"},
+"content": {
+"title": "title",
+"description": "test",
+"color": "20ff00",
+"image": "none"}
+}]
