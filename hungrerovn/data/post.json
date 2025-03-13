@@ -1,13 +1,13 @@
 [{
 "index": "0",
-"time": "13/03/2025 15:00",
+"time": "00/00/0000 00:00",
 "owner": {
-"id": "1103717241268207636",
-"name": "Hrv | HưNgG - 🌹",
-"avatar": "https://cdn.discordapp.com/avatars/1103717241268207636/3d47687d5bfbd409c527b64beaab34f9.png?size=1024&ignore=true"},
+"id": "none",
+"name": "none",
+"avatar": "none"},
 "content": {
-"title": "mở màn đầu tiên",
-"description": "he he",
+"title": "title",
+"description": "description",
 "color": "20ff00",
 "image": "none"}
 }]
