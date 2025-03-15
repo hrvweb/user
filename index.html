@@ -342,6 +342,11 @@ fetch('https://hrvweb.github.io/user/hungrerovn/data/post.json')
 const jsonArray = data;
 if (index >= 0 && index < jsonArray.length) {
 document.getElementById('error').style.display = 'none';
+document.getElementById("av-1").style.display = 'block';
+document.getElementById('text-3-2').style.display = 'block';
+document.getElementById('dsp').style.display = 'block';
+document.getElementById('title').style.display = 'block';
+document.querySelector('.text-3').style.display = 'block';
 const element = jsonArray[index];
 document.getElementById("av-1").src = element["owner"]["avatar"];
 document.getElementById('text-3-2').innerHTML = element["owner"]["name"] + ' <small style="color: #ccc; font-size: 12px;">' + element["time"] + '</small>';
@@ -363,6 +368,11 @@ document.getElementById('dsp').style.display = 'none';
 document.getElementById('title').style.display = 'none';
 document.querySelector('.text-3').style.display = 'none';
 document.getElementById("image").setAttribute('hidden', true);
+document.getElementById("av-1").src = '';
+document.getElementById('text-3-2').innerHTML = '';
+document.getElementById('dsp').innerHTML = '';
+document.getElementById('title').innerHTML = '';
+document.querySelector('.text-3').style.border = '';
 }
 })
 .catch(error => {
