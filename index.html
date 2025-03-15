@@ -22,6 +22,7 @@
 <meta name="twitter:description" content="Hrv Clan Website • Trang Chủ" />
 <meta name="twitter:image" content="https://iili.io/2pxjVAg.png" />
 <meta name="twitter:url" content="https://hrvweb.github.io/user" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <style>
 body {
 background-color: #666;
@@ -171,6 +172,21 @@ padding-left: 10px;
 padding-bottom: 10px;
 }
 
+form {
+margin-top: -46px;
+padding-left: 176px;
+}
+
+input[type="number"] {
+width: 76px;
+}
+
+#error {
+text-align: center;
+color: #fff;
+display: none;
+}
+
 .text-3 {
 border-radius: 20px;
 color: #fff;
@@ -245,7 +261,12 @@ padding-bottom: 6px;
 <div id="list"></div>
 <h5>⚠️ lưu ý: các trang web này không thuộc sở hữu của hrv clan (trừ một số trang web của @hungrero_vn)</h5>
 </div>
-<h2 id="text-3-1">bài đăng gần đây</h2>
+<h2 id="text-3-1">bài đăng gần đây!</h2>
+<form id="search-form">
+<input type="number" id="index-input" placeholder="index bài đăng">
+<button type="submit"><i class="fa fa-search"></i></button>
+</form>
+<h3 id="error">không tìm thấy bài đăng!</h3>
 <img id="av-1" title="avatar" alt="avatar">
 <h3 id="text-3-2"></h3>
 <div class="text-3">
@@ -287,6 +308,8 @@ color: #fff;" href="https://hrvweb.github.io/user/${layTenThuMuc(5)}">xem</a></h
 `;
 });
 
+const form = document.getElementById('search-form');
+const indexInput = document.getElementById('index-input');
 fetch('https://hrvweb.github.io/user/hungrerovn/data/post.json')
 .then(response => response.json())
 .then(data => {
@@ -307,7 +330,44 @@ document.getElementById("image").setAttribute('hidden', true);
 }
 })
 .catch(error => {
-console.log('Lỗi: ', error);
+console.log('Lỗi:', error);
+});
+
+form.addEventListener('submit', (e) => {
+e.preventDefault();
+const index = parseInt(indexInput.value);
+fetch('https://hrvweb.github.io/user/hungrerovn/data/post.json')
+.then(response => response.json())
+.then(data => {
+const jsonArray = data;
+if (index >= 0 && index < jsonArray.length) {
+document.getElementById('error').style.display = 'none';
+const element = jsonArray[index];
+document.getElementById("av-1").src = element["owner"]["avatar"];
+document.getElementById('text-3-2').innerHTML = element["owner"]["name"] + ' <small style="color: #ccc; font-size: 12px;">' + element["time"] + '</small>';
+document.getElementById('dsp').innerHTML = element["content"]["description"];
+document.getElementById('title').innerHTML = element["content"]["title"];
+document.querySelector('.text-3').style.border = '3px solid #' + element["content"]["color"];
+if (element["content"]["image"]!== 'none') {
+document.getElementById("image").src = element["content"]["image"];
+document.getElementById("image").removeAttribute('hidden');
+} else {
+document.getElementById("image").setAttribute('hidden', true);
+}
+} else {
+document.getElementById('error').style.display = 'block';
+document.getElementById('error').innerHTML = 'Không tìm thấy bài đăng';
+document.getElementById("av-1").style.display = 'none';
+document.getElementById('text-3-2').style.display = 'none';
+document.getElementById('dsp').style.display = 'none';
+document.getElementById('title').style.display = 'none';
+document.querySelector('.text-3').style.display = 'none';
+document.getElementById("image").setAttribute('hidden', true);
+}
+})
+.catch(error => {
+console.log('Lỗi:', error);
+});
 });
 </script>
 </body>
