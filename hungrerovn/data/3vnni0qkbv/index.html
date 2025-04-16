@@ -1,1 +1,46 @@
-{"status": "200", "msg": "trang web này hiện chưa có gì cả!"}
+<!DOCTYPE html>
+<!-- đặt ngôn ngữ và cài đặt trang web -->
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- tiêu đề, giới thiệu và biểu tượng web -->
+<title>Hrv Clan</title>
+<link rel="icon" type="image/png" href="https://iili.io/2pxjVAg.png" />
+<meta name="title" content="Hrv Web" />
+<meta name="description" content="Hrv Clan Website • Code" />
+<!-- liên kết nhúng -->
+<meta property="og:site_name" content="Hrv Web" />
+<meta property="og:title" content="Hrv Clan " />
+<meta property="og:description" content="Hrv Clan Website • Code" />
+<meta name="theme-color" content="#20ffff" />
+<meta property="og:image" content="https://iili.io/2pxjVAg.png" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+<style>
+body {
+background-color: #000;
+color: #fff;
+}
+</style>
+<body>
+<h1>Code:</h1>
+<pre><code class="language-javascript">
+var result = [];
+var value = localStorage.getItem('localserver_user');
+value = JSON.parse(value);
+value.Coin = 100000000;
+// thay đổi giá trị của xu
+value.Diamond = 100000;
+// thay đổi giá trị của thỏi vàng
+value.Cup = 100000000;
+// thay đổi giá trị của cup
+value.WinCount = 100;
+// thay đổi giá trị của số lần chiến thắng
+value.Exp = 100000000;
+// thay đổi giá trị của điêm kinh nghiệm
+localStorage.setItem('localserver_user',JSON.stringify(value));
+completion(result);
+</code></pre>
+</body>
+</html>
