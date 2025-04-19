@@ -1,1 +1,103 @@
-{"status": "200", "msg": "trang web này hiện chưa có gì cả!"}
+<!DOCTYPE html>
+<!-- đặt ngôn ngữ và cài đặt trang web -->
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- tiêu đề, giới thiệu và biểu tượng web -->
+<title>Hrv Clan</title>
+<link rel="icon" type="image/png" href="https://iili.io/2pxjVAg.png" />
+<meta name="title" content="Hrv Web" />
+<meta name="description" content="Hrv Clan Website • Code" />
+<!-- liên kết nhúng -->
+<meta property="og:site_name" content="Hrv Web" />
+<meta property="og:title" content="Hrv Clan " />
+<meta property="og:description" content="Hrv Clan Website • Code" />
+<meta name="theme-color" content="#20ffff" />
+<meta property="og:image" content="https://iili.io/2pxjVAg.png" />
+<style>
+code[class*=language-],pre[class*=language-]{color:#999;background-color: #333;text-shadow:0 1px #000;font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}code[class*=language-] ::-moz-selection,code[class*=language-]::-moz-selection,pre[class*=language-] ::-moz-selection,pre[class*=language-]::-moz-selection{text-shadow:none;background:#b3d4fc}code[class*=language-] ::selection,code[class*=language-]::selection,pre[class*=language-] ::selection,pre[class*=language-]::selection{text-shadow:none;background:#b3d4fc}@media print{code[class*=language-],pre[class*=language-]{text-shadow:none}}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#333}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#999}.token.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#905}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#690}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{color:#9a6e3a;background:hsla(0,0%,100%,.5)}.token.atrule,.token.attr-value,.token.keyword{color:#07a}.token.class-name,.token.function{color:#dd4a68}.token.important,.token.regex,.token.variable{color:#e90}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.operator {background: none;}
+</style>
+<style>
+body {
+background-color: #000;
+color: #fff;
+}
+
+.copy-code {
+position: relative;
+width: 102%;
+top: 20px;
+background-color: #405060;
+}
+
+img {
+position: relative;
+padding: 6px;
+left: 306px;
+width: 40px;
+height: 40px;
+}
+
+.main {
+position: relative;
+top: -140px;
+}
+
+#pw {
+position: relative;
+padding: 6px;
+top: 86px;
+z-index: 2;
+}
+
+.code {
+font-family: robot-mono;
+width: 90%;
+background-color: #333;
+border: 5px solid #405060;
+padding: 10px;
+overflow-x: auto;
+}
+</style>
+<body>
+<h1>Code:</h1>
+<div style="position: relative; top: -1999px;">
+ <textarea id="text">var result = [];
+var version = localStorage.getItem("localVersion");
+var value = localStorage.getItem(version + "-level_Save_Content");
+value = JSON.parse(value);
+value["0"]["farLevel"] = value["0"]["maxLevel"];
+localStorage.setItem(version + "-level_Save_Content", JSON.stringify(value));
+localStorage.setItem(version + "-user-power",'999999');
+completion(result);
+ </textarea>
+</div>
+<div class="main">
+<h2 id="pw">peview</h2>
+<div class="copy-code">
+<img onclick="myFunction()" src="https://iili.io/31Xf8KB.png" title="icon" alt="icon">
+</div>
+<pre class="code"><code class="language-javascript">var result = [];
+var version = localStorage.getItem("localVersion");
+var value = localStorage.getItem(version + "-level_Save_Content");
+value = JSON.parse(value);
+value["0"]["farLevel"] = value["0"]["maxLevel"];
+localStorage.setItem(version + "-level_Save_Content", JSON.stringify(value));
+localStorage.setItem(version + "-user-power",'999999');
+completion(result);
+</code></pre>
+<p style="color: #fff;text-align: center;">&copy; 2025 Hrv Web. All rights reserved!</p>
+</div>
+<script>
+function myFunction() {
+var noi_dung_sao_chep = document.getElementById("text");
+noi_dung_sao_chep .select();
+noi_dung_sao_chep .setSelectionRange(0, 99999);
+document.execCommand("copy");
+alert('đã sao chép vào bảng nhớ tạm!');
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+</body>
+</html>
