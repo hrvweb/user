@@ -16,10 +16,149 @@
 <style>
 body {
 background: linear-gradient(to bottom, #000000, #ff0000);
-text-align: center;
+
 padding: 20px;
 padding-bottom: 20px;
 margin-top: -26px;
+}
+
+.menu {
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 16px;
+background-color: #191919;
+width: 108%;
+height: 26px;
+margin-top: 6px;
+margin-left: -28px;
+}
+
+.logo {
+margin-right: 0px;
+}
+
+.logo img {
+margin-top: 5px;
+margin-left: -10px;
+width: 50px;
+object-fit: contain;
+}
+
+.logo h2 {
+margin-top: -40px;
+margin-left: 50px;
+font-size: 20px;
+font-weight: bold;
+color: #fff;
+}
+
+.menu-toggle {
+cursor: pointer;
+}
+
+.menu-toggle span {
+display: block;
+width: 20px;
+height: 2px;
+background-color: #fff;
+margin-bottom: 5px;
+}
+
+.menu-list {
+position: relative;
+z-index: 2;
+border: 2px solid #ccc;
+font-size: 20px;
+display: none;
+position: absolute;
+top: 66px;
+left: 220px;
+background-color: #191919;
+width: 80px;
+padding: 10px;
+padding-top: 6px;
+padding-left: 36px;
+padding-bottom: 6px;
+line-height: 60%;
+}
+
+.menu-toggle.active +.menu-list {
+display: block;
+}
+
+.menu-list ul {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+
+.menu-list span {
+color: #333;
+}
+
+.menu-list h5 {
+border: 1px solid #ccc;
+background-color: #333;
+color: #fff;
+margin-top: -6px;
+margin-left: -36px;
+margin-bottom: 10px;
+width: 130%;
+padding-top: 6px;
+padding-left: 20px;
+padding-bottom: 6px;
+}
+
+.menu-list li {
+margin-bottom: 6px;
+}
+
+.menu-list a {
+color: #fff;
+text-decoration: none;
+}
+
+.menu-list a:hover {
+color: #ccc;
+}
+
+.menu-toggle:hover span:nth-child(1) {
+transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle:hover span:nth-child(2) {
+opacity: 0;
+}
+
+.menu-toggle:hover span:nth-child(3) {
+transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.menu-toggle:not(.active) span:nth-child(1) {
+transform: rotate(0deg) translate(0px, 0px);
+}
+
+.menu-toggle:not(.active) span:nth-child(2) {
+opacity: 1;
+}
+
+.menu-toggle:not(.active) span:nth-child(3) {
+transform: rotate(0deg) translate(0px, 0px);
+}
+
+.main {
+position: relative;
+text-align: center;
+}
+
+.avatar {
+position: relative;
+z-index: 1;
+width: 180px;
+height: 180px;
+border-radius: 50%;
+border: 3px solid #fff;
 }
 
 .container {
@@ -28,16 +167,16 @@ position: relative;
 
 .banner {
 position: absolute;
-top: -26px;
-left: 0;
-width: 100%;
-height: 20
-%;
+top: 0px;
+left: -30px;
+width: 119%;
+height: 120px;
 }
 
 .avatar {
+top: 20px;
 position: relative;
-z-index: 1        ;
+z-index: 1;
 width: 180px;
 height: 180px;
 border-radius: 50%;
@@ -85,6 +224,28 @@ top: 0;
 </style>
 </head>
 <body>
+<div class="menu">
+<div class="logo">
+<a href="https://hrvweb.github.io/user" style="text-decoration: none;"><img src="https://iili.io/2pxjVAg.png" title="Logo" alt="Logo"></a>
+<a href="https://hrvweb.github.io/user" style="text-decoration: none;"><h2>Hrv Web</h2></a>
+</div>
+<div class="menu-toggle" onclick="this.classList.toggle('active')">
+<span></span>
+<span></span>
+<span></span>
+</div>
+<div class="menu-list">
+<h5><span>_</span>Hrv Web</h5>
+<ul>
+<li><a href="https://hrvweb.github.io/user">Home</a></li>
+<li><a href="https://hrvweb.github.io/user/hungrerovn">About</a></li>
+<li><a href="https://hrvweb.github.io/user/hungrerovn/clan">Clan</a></li>
+<li><a href="https://hrvweb.github.io/user/hrv-rero-bot/">Bots</a></li>
+<li><a href="https://hrvweb.github.io/user/docs">Docs</a></li>
+</ul>
+</div>
+</div>
+<div class="main">
 <div id="snowflakeContainer">
 <p class="snowflake">🤖</p>
 </div>
@@ -103,8 +264,8 @@ top: 0;
 <br>
 <h5 style="color: #fff;" ><a style="color: #fff;text-decoration: none;" href="https://hrvweb.github.io/user/hrv-rero-bot/terms-of-service/index.html">terms of service</a> | <a style="color: #fff;text-decoration: none;" href="https://hrvweb.github.io/user/hrv-rero-bot/privacy-policy/index.html">privacy policy</a></h5>
 <p style="color: #fff;">&copy; 2025 Hrv Web. All rights reserved!</p>
+</div>
 <script type="text/javascript">
-//<![CDATA[
   var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
   var transforms = ["transform", "msTransform", "webkitTransform", "mozTransform", "oTransform"];
   var transformProperty = getSupportedPropertyName(transforms);
@@ -207,7 +368,6 @@ top: 0;
   function setResetFlag(a) {
     resetPosition = true;
   }
-//]]>
 </script>
 </body>
 </html>
