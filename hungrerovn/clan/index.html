@@ -21,13 +21,142 @@ padding-bottom: 100%;
 margin-top: -26px;
 }
 
+.menu {
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 16px;
+background-color: #191919;
+width: 108%;
+height: 26px;
+margin-top: 6px;
+margin-left: -28px;
+}
+
+.logo {
+margin-right: 0px;
+}
+
+.logo img {
+margin-top: 5px;
+margin-left: -10px;
+width: 50px;
+object-fit: contain;
+}
+
+.logo h2 {
+margin-top: -40px;
+margin-left: 50px;
+font-size: 20px;
+font-weight: bold;
+color: #fff;
+}
+
+.menu-toggle {
+cursor: pointer;
+}
+
+.menu-toggle span {
+display: block;
+width: 20px;
+height: 2px;
+background-color: #fff;
+margin-bottom: 5px;
+}
+
+.menu-list {
+position: relative;
+z-index: 2;
+border: 2px solid #ccc;
+font-size: 20px;
+display: none;
+position: absolute;
+top: 66px;
+left: 220px;
+background-color: #191919;
+width: 80px;
+padding: 10px;
+padding-top: 6px;
+padding-left: 36px;
+padding-bottom: 6px;
+line-height: 60%;
+}
+
+.menu-toggle.active +.menu-list {
+display: block;
+}
+
+.menu-list ul {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+
+.menu-list span {
+color: #333;
+}
+
+.menu-list h5 {
+border: 1px solid #ccc;
+background-color: #333;
+color: #fff;
+margin-top: -6px;
+margin-left: -36px;
+margin-bottom: 10px;
+width: 130%;
+padding-top: 6px;
+padding-left: 20px;
+padding-bottom: 6px;
+}
+
+.menu-list li {
+margin-bottom: 6px;
+}
+
+.menu-list a {
+color: #fff;
+text-decoration: none;
+}
+
+.menu-list a:hover {
+color: #ccc;
+}
+
+.menu-toggle:hover span:nth-child(1) {
+transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle:hover span:nth-child(2) {
+opacity: 0;
+}
+
+.menu-toggle:hover span:nth-child(3) {
+transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.menu-toggle:not(.active) span:nth-child(1) {
+transform: rotate(0deg) translate(0px, 0px);
+}
+
+.menu-toggle:not(.active) span:nth-child(2) {
+opacity: 1;
+}
+
+.menu-toggle:not(.active) span:nth-child(3) {
+transform: rotate(0deg) translate(0px, 0px);
+}
+
+.main {
+position: relative;
+}
+
 .background {
 position: absolute;
 object-fit: cover;
 top: 0px;
-left: 0;
-width: 100%;
-height: 200px;
+left: -28px;
+width: 119%;
+height: 210px;
 }
 
 .icon {
@@ -129,6 +258,28 @@ color: #fff;
 </style>
 </head>
 <body>
+<div class="menu">
+<div class="logo">
+<a href="https://hrvweb.github.io/user" style="text-decoration: none;"><img src="https://iili.io/2pxjVAg.png" title="Logo" alt="Logo"></a>
+<a href="https://hrvweb.github.io/user" style="text-decoration: none;"><h2>Hrv Web</h2></a>
+</div>
+<div class="menu-toggle" onclick="this.classList.toggle('active')">
+<span></span>
+<span></span>
+<span></span>
+</div>
+<div class="menu-list">
+<h5><span>_</span>Hrv Web</h5>
+<ul>
+<li><a href="https://hrvweb.github.io/user">Home</a></li>
+<li><a href="https://hrvweb.github.io/user/hungrerovn">About</a></li>
+<li><a href="https://hrvweb.github.io/user/hungrerovn/clan">Clan</a></li>
+<li><a href="https://hrvweb.github.io/user/hrv-rero-bot/">Bots</a></li>
+<li><a href="https://hrvweb.github.io/user/docs">Docs</a></li>
+</ul>
+</div>
+</div>
+<div class="main">
 <img class="background" src="https://iili.io/2p244PS.png" title="Background" alt="Background">
 <img class="icon" src="https://iili.io/2pxjVAg.png" title="Hrv Clan Icon" alt="Hrv Clan Icon">
 <h3 id="title" class="title">h</h3>
@@ -155,6 +306,7 @@ máy chủ hiện có: 1 owner, 1co-owner, 8 admin, 5 mod, 2 staff</p>
 <h2>Members Online Status!</h2>
 <iframe src="https://discord.com/widget?id=1104002017741000785&theme=dark" style="margin-left: -28px;"width="118%" height="600" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
 <p style="color: #fff;text-align: center;">&copy; 2025 Hrv Web. All rights reserved!</p>
+</div>
 <script>
 fetch('https://discord.com/api/guilds/1104002017741000785/widget.json')
 .then(response => response.json())
